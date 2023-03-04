@@ -14,7 +14,6 @@ function Text_prompt({ onSubmit }) {
           });
           e.target[0].value = "";
           const data = await response.json();
-          console.log(data);
           onSubmit(<Gpt_response text={data} />);
         }}
         className="mt-3 w-full h-5/6 flex items-center justify-center">
