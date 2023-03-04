@@ -1,5 +1,14 @@
 .App {
-  text-align: center;
+  height: 100%;
+  width: 100%;
+  display: grid;
+  background-color: black;
+  grid-template-rows: auto 1fr auto;
+  grid-template-columns: 1fr;
+  grid-template-areas:
+    "header"
+    "main"
+    "chat_box";
 }
 
 .App-logo {
@@ -27,6 +36,7 @@
 .App-link {
   color: #61dafb;
 }
+
 
 @keyframes App-logo-spin {
   from {

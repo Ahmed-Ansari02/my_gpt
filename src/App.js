@@ -1,23 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import Header from "./components/Header";
+import Gpt_response from "./components/Gpt_response";
+import Text_prompt from "./components/Text_prompt";
+import { useState } from "react";
+import { Grammarly, GrammarlyButton } from "@grammarly/editor-sdk-react";
 
 function App() {
+  const [text, setText] = useState([
+    <Gpt_response text="Hello, ask me anything!" />,
+  ]);
+  function onSubmit(text) {
+    setText((prev) => [...prev, text]);
+  }
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header />
+      <Grammarly clientId="client_XtoqFN3XhE31iUKcKDpJTs" button>
+        <div className="bg-black caret-blue-700 overflow-auto">
+          {text}
+          <GrammarlyButton menuPosition=""></GrammarlyButton>
+        </div>
+      </Grammarly>
+
+      <Text_prompt onSubmit={onSubmit} />
     </div>
   );
 }
